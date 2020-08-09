@@ -42,11 +42,18 @@ function paint() {
 
     function click(event) {
         ctx.fillStyle = color
-        ctx.fillRect(event.layerX - 6, event.layerY - 1, 12, 2)
-        ctx.fillRect(event.layerX - 5, event.layerY - 3, 10, 6)
-        ctx.fillRect(event.layerX - 4, event.layerY - 4, 8, 8)
-        ctx.fillRect(event.layerX - 3, event.layerY - 5, 6, 10)
-        ctx.fillRect(event.layerX - 1, event.layerY - 6, 2, 12)
+            // ctx.fillRect(event.layerX - 6, event.layerY - 1, 12, 2)
+            // ctx.fillRect(event.layerX - 5, event.layerY - 3, 10, 6)
+            // ctx.fillRect(event.layerX - 4, event.layerY - 4, 8, 8)
+            // ctx.fillRect(event.layerX - 3, event.layerY - 5, 6, 10)
+            // ctx.fillRect(event.layerX - 1, event.layerY - 6, 2, 12)
+
+        let a = 6;
+        ctx.fillRect(event.layerX - a, event.layerY - 1, 2 * a, 2)
+        for (let i = 1; i < a - 2; i++) {
+            ctx.fillRect(event.layerX - (a - i), event.layerY - i - 2, 2 * (a - i), 2 * i + 4)
+        }
+        ctx.fillRect(event.layerX - 1, event.layerY - a, 2, 2 * a)
     }
 
     document.addEventListener('mouseup', function() {
