@@ -9,6 +9,10 @@ const colorGreen = document.querySelector('.green')
 
 color = '#fff'
 
+colorWhile.addEventListener('click', function() {
+    color = '#fff'
+})
+
 colorBlack.addEventListener('click', function() {
     color = 'black'
 })
