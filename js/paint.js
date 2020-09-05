@@ -42,12 +42,9 @@ function bg() {
 }
 
 function paint() {
-    document.addEventListener('mousedown', stac)
 
-    function stac() {
-        document.addEventListener('click', click)
-        document.addEventListener('mousemove', click)
-    }
+    document.addEventListener('click', click)
+    document.addEventListener('mousemove', click)
 
     function click(event) {
         ctx.fillStyle = color
@@ -57,9 +54,14 @@ function paint() {
         for (let i = 1; i < a - 2; i++) {
             ctx.fillRect(event.layerX - (a - i), event.layerY - i - 2, 2 * (a - i), 2 * i + 4)
         }
-
     }
+
+    document.addEventListener('mouseup', function() {
+        document.removeEventListener('mousemove', click)
+    })
+
 }
 
 bg()
-let paintLayn = setInterval(paint, 0)
+    // let paintLayn = setInterval(paint, 0)
+document.addEventListener('mousedown', paint)
