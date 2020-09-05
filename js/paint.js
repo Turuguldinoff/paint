@@ -7,8 +7,7 @@ const colorRed = document.querySelector('.red')
 const colorBlue = document.querySelector('.blue')
 const colorGreen = document.querySelector('.green')
 
-let color = '#fff'
-
+color = '#fff'
 
 colorWhile.addEventListener('click', function() {
     color = '#fff'
@@ -29,8 +28,18 @@ colorBlue.addEventListener('click', function() {
 colorGreen.addEventListener('click', function() {
     color = 'green'
 })
-ctx.fillStyle = 'black'
-ctx.fillRect(0, 0, 1216, 608)
+
+let b = 16
+
+function bg() {
+    for (let i = 0; i < 1216 / b; i++) {
+        for (let j = 0; j < 608 / b; j++) {
+            let c = (Math.floor(Math.random() * (16777215 - 0)) + 0).toString(16)
+            ctx.fillStyle = `#${c}`
+            ctx.fillRect(i * b, j * b, b, b)
+        }
+    }
+}
 
 function paint() {
     document.addEventListener('mousedown', stac)
@@ -42,13 +51,8 @@ function paint() {
 
     function click(event) {
         ctx.fillStyle = color
-            // ctx.fillRect(event.layerX - 6, event.layerY - 1, 12, 2)
-            // ctx.fillRect(event.layerX - 5, event.layerY - 3, 10, 6)
-            // ctx.fillRect(event.layerX - 4, event.layerY - 4, 8, 8)
-            // ctx.fillRect(event.layerX - 3, event.layerY - 5, 6, 10)
-            // ctx.fillRect(event.layerX - 1, event.layerY - 6, 2, 12)
 
-        let a = 6;
+        let a = 6
         ctx.fillRect(event.layerX - a, event.layerY - 1, 2 * a, 2)
         for (let i = 1; i < a - 2; i++) {
             ctx.fillRect(event.layerX - (a - i), event.layerY - i - 2, 2 * (a - i), 2 * i + 4)
@@ -61,4 +65,5 @@ function paint() {
     })
 }
 
-let paintLayn = setInterval(paint, 0.5)
+bg()
+let paintLayn = setInterval(paint, 0)
